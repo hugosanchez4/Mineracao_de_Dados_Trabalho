@@ -1,0 +1,30 @@
+% Tabela das 14 features morfométricas analisadas.
+% Combina EDA (valores ausentes + Kruskal-Wallis) e ML (importância por permutação).
+% Inclua no relatório com: \input{tabela_features_analisadas.tex}
+% Requer no preâmbulo: \usepackage{booktabs}
+
+\begin{table}[htbp]
+\caption{Conjunto de 14 \textit{features} morfométricas analisadas. Percentual de valores ausentes (antes da imputação), estatística $H$ e $p$-valor do teste de Kruskal-Wallis para diferença entre espécies ($\alpha = 0{,}05$) e importância por permutação no modelo de classificação final (SVM RBF; F1-macro como métrica). Ordenado pela significância no Kruskal-Wallis.}\label{tab:features}
+\small
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lccccc@{}}
+\toprule
+\textit{Feature} & Ausentes (\%) & $H$ & $p$-valor & Signif. & Imp.\ perm. \\
+\midrule
+Perímetro ($\mu$m)            & 6{,}7  & 39{,}88 & $1{,}1\times10^{-8}$ & sim & 0{,}026 \\
+Solidez                        & 6{,}7  & 39{,}14 & $1{,}6\times10^{-8}$ & sim & 0{,}067 \\
+Área ($\mu$m$^2$)              & 6{,}7  & 33{,}26 & $2{,}8\times10^{-7}$ & sim & 0{,}040 \\
+Feret ($\mu$m)                 & 6{,}7  & 29{,}72 & $1{,}6\times10^{-6}$ & sim & --- \\
+Comp.\ do espinho ($\mu$m)     & 3{,}4  & 29{,}47 & $1{,}8\times10^{-6}$ & sim & 0{,}092 \\
+Circularidade                  & 6{,}7  & 28{,}72 & $2{,}6\times10^{-6}$ & sim & --- \\
+Eixo polar ($\mu$m)            & 1{,}1  & 27{,}30 & $5{,}1\times10^{-6}$ & sim & 0{,}076 \\
+Larg.\ ectoabertura ($\mu$m)   & 34{,}8 & 22{,}94 & $4{,}2\times10^{-5}$ & sim & 0{,}057 \\
+Comp.\ ectoabertura ($\mu$m)   & 34{,}8 & 16{,}92 & $7{,}4\times10^{-4}$ & sim & 0{,}038 \\
+Eixo equatorial ($\mu$m)       & 1{,}1  & 9{,}85  & $2{,}0\times10^{-2}$ & sim & --- \\
+Larg.\ endoabertura ($\mu$m)   & 48{,}3 & 8{,}97  & $3{,}0\times10^{-2}$ & sim & 0{,}033 \\
+Larg.\ do espinho ($\mu$m)     & 3{,}4  & 5{,}71  & $1{,}3\times10^{-1}$ & não & --- \\
+Comp.\ endoabertura ($\mu$m)   & 48{,}3 & 3{,}57  & $3{,}1\times10^{-1}$ & não & 0{,}035 \\
+Espessura da exina ($\mu$m)    & 29{,}2 & 3{,}12  & $3{,}7\times10^{-1}$ & não & 0{,}030 \\
+\botrule
+\end{tabular*}
+\footnotetext{Signif. = diferença estatisticamente significativa entre espécies ($p < 0{,}05$). Imp.\ perm. = queda média em F1-macro ao permutar a variável; ``---'' indica variável fora do \textit{top} 10 de importância. Base: 89 grãos válidos (\texttt{valid=1}), vista equatorial.}
+\end{table}

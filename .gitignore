@@ -1,0 +1,25 @@
+# Saídas geradas pela análise (recriadas por scripts/run_analysis.py)
+codigo/outputs/
+codigo/docs/resultados_*.md
+codigo/data/tables/pollen_features_clean.csv
+
+# Caches Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Arquivos auxiliares do LaTeX
+relatorio/*.aux
+relatorio/*.log
+relatorio/*.out
+relatorio/*.blg
+relatorio/*.bbl
+relatorio/*.synctex.gz
+relatorio/*.toc
+relatorio/*.fls
+relatorio/*.fdb_latexmk
+
+# Sistema
+.DS_Store

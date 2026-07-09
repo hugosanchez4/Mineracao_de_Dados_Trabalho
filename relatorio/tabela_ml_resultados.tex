@@ -1,0 +1,32 @@
+% Tabelas de resultados do aprendizado de máquina.
+% Inclua no relatório com: \input{tabela_ml_resultados.tex}
+% Requer no preâmbulo: \usepackage{booktabs}
+
+\begin{table}[htbp]
+\caption{Comparação dos modelos de classificação por validação cruzada estratificada (5-\textit{fold}). Métricas: média $\pm$ desvio-padrão entre \textit{folds}.}\label{tab:ml_modelos}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lcc@{}}
+\toprule
+Modelo & F1-macro & Acurácia \\
+\midrule
+\textit{Dummy} (linha de base) & $0{,}209 \pm 0{,}028$ & $0{,}202 \pm 0{,}025$ \\
+Random Forest                  & $0{,}715 \pm 0{,}065$ & $0{,}719 \pm 0{,}061$ \\
+SVM (kernel RBF)               & $\mathbf{0{,}716} \pm 0{,}140$ & $\mathbf{0{,}719} \pm 0{,}145$ \\
+\botrule
+\end{tabular*}
+\footnotetext{Modelo final: SVM RBF, selecionado pelo maior F1-macro. A imputação (mediana) e a padronização (\textit{z-score}) foram ajustadas dentro de cada \textit{fold} da validação cruzada, evitando vazamento de dados. Hiperparâmetros otimizados por \texttt{GridSearchCV}: SVM ($C=1$, $\gamma=0{,}1$); Random Forest (\texttt{n\_estimators}$=100$, \texttt{max\_depth}$=$None, \texttt{max\_features}$=$sqrt, \texttt{min\_samples\_leaf}$=2$).}
+\end{table}
+
+\begin{table}[htbp]
+\caption{Desempenho por espécie do modelo final (SVM RBF), com predições \textit{out-of-fold}.}\label{tab:ml_classes}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lcccc@{}}
+\toprule
+Espécie & Precisão & \textit{Recall} & F1 & Suporte \\
+\midrule
+\textit{C. hatschbachii}    & 0{,}905 & 0{,}864 & 0{,}884 & 22 \\
+\textit{C. longiangustatus} & 0{,}621 & 0{,}750 & 0{,}679 & 24 \\
+\textit{C. rupestris}       & 0{,}591 & 0{,}619 & 0{,}605 & 21 \\
+\textit{C. ruschianus}      & 0{,}824 & 0{,}636 & 0{,}718 & 22 \\
+\botrule
+\end{tabular*}
+\footnotetext{Acurácia global $= 0{,}719$; F1-macro $= 0{,}721$. Clusterização exploratória (K-Means, $k=4$): \textit{Adjusted Rand Index} (ARI) $= 0{,}233$.}
+\end{table}
